@@ -10,3 +10,10 @@ header > .container-fluid h2 {
     font-weight: 700; font-size: 2.2rem;
     margin: 0;
 }
+
+/* Small devices */
+@media (max-width: 575.98px) { 
+    header > .container-fluid h2 {
+        font-size: 1.95rem;
+    }
+ }

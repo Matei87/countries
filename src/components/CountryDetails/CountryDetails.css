@@ -45,12 +45,18 @@
         'second ';
         margin-top: 2rem;
     }
+    #countryDetails .page-back {
+        margin: 1.5rem 0;
+    }
  }
 
 /* Small devices */
 @media (min-width: 576px) and (max-width: 767.98px) { 
     #countryDetails .row .second-col {
         margin-top: 2rem;
+    }
+    #countryDetails .page-back {
+        margin: 1.5rem 0;
     }
  }
 

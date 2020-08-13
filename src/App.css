@@ -1,38 +1,48 @@
-.App {
-  text-align: center;
+.container-fluid {
+    max-width: 90%;
 }
+.cards {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2rem;
+}
+.cards .spinner-border {
+   position: fixed; left: 50%;
+}
+.h2-center {
+    color: white; margin-bottom: 0;
+    position: absolute; left: 50%; transform: translate(-50%);
+}
+/* Extra small devices */
+@media (max-width: 575.98px) { 
+    .cards {
+        grid-template-columns: 1fr;
+    }
+ }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+/* Small devices */
+@media (min-width: 576px) and (max-width: 767.98px) { 
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+ }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
+/* Medium devices */
+@media (min-width: 768px) and (max-width: 991.98px) { 
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+ }
 
-.App-link {
-  color: #61dafb;
-}
+/* Large devices */
+@media (min-width: 992px) and (max-width: 1199.98px) { 
+    .cards {
+        grid-template-columns: repeat(3, 1fr);
+    }
+ }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+/* Extra large devices */
+@media (min-width: 1200px) { 
+
+ }

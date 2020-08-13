@@ -1,0 +1,38 @@
+.card {
+    border: none !important;
+    border-radius: .5rem!important;
+}
+.card .card-img-top {
+border-radius: .5rem .5rem 0 0;
+height: 50%; object-fit: cover;
+}
+
+.card .card-body .card-title {
+    font-weight: 700; font-size: 1.25rem;
+    margin-bottom: .5rem;
+}
+
+ul {
+    list-style-type: none; margin-bottom: .5rem !important;
+}
+
+ul li {
+    font-size: 1.1rem;
+}
+ul li span {
+    font-weight: 600;
+}
+.card .card-body a .page-details {
+    background: #212529; border-color: #212529; 
+    color: rgb(255, 255, 255);
+}
+
+.card .card-body a .page-details:hover {
+    background: #ccc; border-color: #ccc;
+    color: #212529;
+}
+
+.btn:focus, .btn:active {
+    outline: none !important;
+    box-shadow: none;
+ }

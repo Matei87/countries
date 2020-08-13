@@ -1,0 +1,7 @@
+footer {
+    height: 90px; background: darkmagenta; font-weight: 600; font-size: 1.25rem;
+    display: flex !important; justify-content: center; align-items: center; margin-top: 3rem;
+}
+footer p {
+    margin: 0; color: white;
+}

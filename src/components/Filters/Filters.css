@@ -12,7 +12,27 @@
 .filters > .form-group {
 margin: 0; width: 30%;
 }
-
+.filters.light input[type='search']{
+    background: #fff; color: #2b3945;
+}
+.filters.light .custom-select{
+    background: #fff url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='5' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") no-repeat right .75rem center/8px 10px;
+    border-radius: .5rem;
+}
+.filters.light #valuelabel option {
+    color: #2b3945;
+}
+.filters.dark input[type='search']{
+    background: #2b3945; border-color: #2b3945;
+    color: #fff;
+}
+.filters.dark #valuelabel.custom-select {
+    background: #2b3945  url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='5' viewBox='0 0 4 5'%3e%3cpath fill='%23ced4da' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") no-repeat right .75rem center/8px 10px;
+    border-color: #2b3945;
+}
+.filters.dark #valuelabel option {
+    color: #2b3945;
+}
 .css-2b097c-container {
 width: 30%;
 }

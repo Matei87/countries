@@ -1,6 +1,6 @@
-.card {
-    border: none !important; border-radius: .5rem!important;
-    transition: all 0.25s linear;
+.card.dark, .card.light {
+    border: none !important;  border-radius: .5rem;
+    transition: all 0.25s linear; background: transparent;
 }
 .card.light {
     background: #fff;
@@ -9,7 +9,7 @@
     background: #2b3945;
 }
 .card .card-img-top {
-border-radius: .5rem .5rem 0 0;
+border-radius: .5rem .5rem 0 0 !important;
 height: 50%; object-fit: cover;
 }
 .card.light .card-body .card-title {
@@ -37,6 +37,7 @@ ul li span {
 }
 .card .card-body {
     padding: 1rem .5rem 1rem 1rem;
+    border-radius: 0 0 .5rem .5rem;
 }
 .card .card-body a .page-details {
     background: #212529; border-color: #212529; 

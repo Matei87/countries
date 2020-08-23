@@ -1,30 +1,46 @@
 .card {
-    border: none !important;
-    border-radius: .5rem!important;
+    border: none !important; border-radius: .5rem!important;
+    transition: all 0.25s linear;
+}
+.card.light {
+    background: #fff;
+} 
+.card.dark .card-body {
+    background: #2b3945;
 }
 .card .card-img-top {
 border-radius: .5rem .5rem 0 0;
 height: 50%; object-fit: cover;
 }
-
+.card.light .card-body .card-title {
+    color: #282c34;
+}
 .card .card-body .card-title {
-    font-weight: 700; font-size: 1.25rem;
-    margin-bottom: .5rem;
+    font-weight: 700; font-size: 1.35rem;
+    margin-bottom: .5rem; color: #fff;
 }
 
 ul {
-    list-style-type: none; margin-bottom: .5rem !important;
+    list-style-type: none;
+    margin-bottom: .5rem !important;
 }
-
+.card.light ul li span {
+    color: #282c34;
+}
 ul li {
-    font-size: 1.1rem;
+    font-size: 1rem;
+    color: #bfbfbf;
 }
 ul li span {
-    font-weight: 600;
+    font-weight: 600; font-size: 1.1rem;
+     color: #fff;
+}
+.card .card-body {
+    padding: 1rem .5rem 1rem 1rem;
 }
 .card .card-body a .page-details {
     background: #212529; border-color: #212529; 
-    color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255); padding: .35rem .75rem;
 }
 
 .card .card-body a .page-details:hover {

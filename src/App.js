@@ -5,6 +5,12 @@ import CountryDetails from './components/CountryDetails/CountryDetails';
 import Cards from './components/Cards/Cards';
 import Footer from './components/Footer/Footer';
 
+
+import { ThemeProvider } from 'styled-components';
+import { lightTheme, darkTheme } from './components/theme';
+import { GlobalStyles } from './components/global';
+
+
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -16,7 +22,7 @@ class App extends React.Component {
     valueInput: '',
     defaultUrl: 'https://restcountries.eu/rest/v2/?fields=name;capital;population;region;flag',
     isLoading: false,
-    error: false
+    theme: 'light'
   }
 
   componentDidMount() {
@@ -26,7 +32,16 @@ class App extends React.Component {
       .then(data => {
         this.setState({ countries: data, isLoading: true })
       })
-      .catch(err => this.setState({ error: true }));
+      .catch(err => console.log(err));
+
+
+    const localTheme = window.localStorage.getItem('theme');
+    if (localTheme) {
+      this.setState({ theme: localTheme });
+    } else {
+      this.setState({ theme: 'light' })
+    }
+
 
   }
 
@@ -37,7 +52,20 @@ class App extends React.Component {
       .then(data => {
         this.setState({ countries: data, isLoading: true })
       })
-      .catch(err => this.setState({ error: true }));
+      .catch(err => console.log(err));
+
+
+  }
+
+  toggleTheme = () => {
+    const { theme } = this.state;
+    if (theme === 'light') {
+      window.localStorage.setItem('theme', 'dark');
+      this.setState({ theme: 'dark' })
+    } else {
+      window.localStorage.setItem('theme', 'light');
+      this.setState({ theme: 'light' })
+    }
   }
 
   changeUrl = e => {
@@ -60,39 +88,43 @@ class App extends React.Component {
       <Router>
         <Switch>
           <>
-            <Header />
-            <div className="container-fluid">
+            <ThemeProvider theme={this.state.theme === 'light' ? lightTheme : darkTheme}>
+              <GlobalStyles />
 
-              <Route exact path="/" >
-                <Filters
-                  changeUrl={this.changeUrl}
-                  defaultvalue={this.state.defaultvalue}
-                  countries={this.state.countries}
-                  valueInputOnChange={this.valueInputOnChange}
-                />
+              <Header toggleTheme={this.toggleTheme} theme={this.state.theme} />
+              <div className="container-fluid">
 
-                <div className="row">
-                  <div className="cards">
-                    {isLoading === false ? <>
-                      <div className="spinner-border text-light" role="status">
-                        <span className="sr-only">Loading...</span>
-                      </div>
-                    </> : filteredCountries.length === 0 ? <>
-                      <h2 className="h2-center">Not Found</h2>
-                    </> : <>  <Cards countries={filteredCountries} /> </>}
+                <Route exact path="/" >
+                  <Filters
+                    theme={this.state.theme}
+                    changeUrl={this.changeUrl}
+                    defaultvalue={this.state.defaultvalue}
+                    countries={this.state.countries}
+                    valueInputOnChange={this.valueInputOnChange}
+                  />
+
+                  <div className="row">
+                    <div className="cards">
+                      {isLoading === false ? <>
+                        <div className="spinner-border text-light" role="status">
+                          <span className="sr-only">Loading...</span>
+                        </div>
+                      </> : filteredCountries.length === 0 ? <>
+                        <h2 className={this.state.theme === 'light' ? 'h2-center light' : ' h2-center dark'} >Not Found</h2>
+                      </> : <>  <Cards countries={filteredCountries} theme={this.state.theme} /> </>}
+                    </div>
                   </div>
-                </div>
-              </Route>
-            </div>
+                </Route>
+              </div>
 
-            {countries.map(country => {
-              return <Route exact path={`/${country.name}`} key={country.name}>
-                <CountryDetails country={`https://restcountries.eu/rest/v2/name/${country.name}`} />
-              </Route>
+              {countries.map(country => {
+                return <Route exact path={`/${country.name}`} key={country.name} theme={this.state.theme}>
+                  <CountryDetails country={`https://restcountries.eu/rest/v2/name/${country.name}`} theme={this.state.theme} />
+                </Route>
+              })}
 
-            })}
-
-            <Footer />
+              <Footer />
+            </ThemeProvider>
           </>
         </Switch>
       </Router >

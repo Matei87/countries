@@ -17,12 +17,24 @@
     'h1 h1'
     'first second' ;
 }
-#countryDetails .row .second-col > h1 {
-   grid-area: h1;  
+#countryDetails .row.dark .second-col > h1.country-name {
+    color: #fff;
+}
+#countryDetails .row.light .second-col > h1.country-name {
+    color: #2b3945;
+}
+#countryDetails .row.light .second-col .col-md-6 ul li {
+    color: #2b3945;
+}
+#countryDetails .row.light .second-col .col-md-6 ul li span {
+    color: black;
+}
+#countryDetails .row .second-col > h1.country-name {
+   grid-area: h1;  padding-left: 15px;
    display: flex; align-items: flex-end; font-weight: 600;
 }
 #countryDetails .row .second-col ul {
-    color: white;
+    color: #fff;
 }
 #countryDetails .row .second-col ul span {
     font-size: 1.25rem;

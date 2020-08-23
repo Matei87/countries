@@ -7,7 +7,7 @@ class Filters extends React.Component {
         const { changeUrl, valueInputOnChange } = this.props;
 
         return (
-            <div className="filters">
+            <div className={this.props.theme === 'filters light' ? 'light' : 'filters dark'}>
                 <input
                     type="search"
                     placeholder="Search a country"

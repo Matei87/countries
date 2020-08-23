@@ -4,14 +4,14 @@ import Card from '../Card/Card';
 
 class Cards extends React.Component {
     render() {
-        const { countries } = this.props;
+        const { countries, theme } = this.props;
 
         return (
             <>
                 {
                     countries.map(country => {
                         return <React.Fragment key={country.name}>
-                            <Card country={country} />
+                            <Card country={country} theme={theme} />
                         </React.Fragment>
                     }
 

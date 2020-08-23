@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 class Card extends React.Component {
 
     render() {
-        const { country } = this.props;
+        const { country, theme } = this.props;
 
         if (country.region === '' || country.region === 0) {
             country.region = 'N/A';
@@ -19,7 +19,7 @@ class Card extends React.Component {
         }
 
         return (
-            < div className="card">
+            < div className={theme === 'light' ? 'card light' : 'card dark'} >
                 <img className="card-img-top" src={country.flag} alt={country.name} />
                 <div className="card-body">
                     <h3 className="card-title">{country.name}</h3>

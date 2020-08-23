@@ -19,6 +19,7 @@ class CountryDetails extends React.Component {
 
     render() {
         const { details } = this.state;
+        const { theme } = this.props;
 
         const obiect = details.currencies;
         let currency = [];
@@ -45,14 +46,14 @@ class CountryDetails extends React.Component {
                     <i className="fas fa-arrow-left" /> Back
                     </Link>
 
-                <div className="row ">
+                <div className={theme === 'light' ? 'row light' : 'row dark'}>
 
                     <div className="col-md-6 first-col">
                         <img src={details.flag} alt={details.name} />
                     </div>
 
                     <div className="col-md-6 second-col">
-                        <h1 style={{ color: 'white' }}>{details.name}</h1>
+                        <h1 className='country-name'>{details.name}</h1>
                         <div className="col-md-6">
                             <ul >
                                 <li><span>Native Name:</span> {details.nativeName}</li>

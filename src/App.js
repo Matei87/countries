@@ -21,8 +21,9 @@ class App extends React.Component {
     countries: [],
     valueInput: '',
     defaultUrl: 'https://restcountries.eu/rest/v2/?fields=name;capital;population;region;flag',
+    theme: 'light',
     isLoading: false,
-    theme: 'light'
+    error: false
   }
 
   componentDidMount() {
@@ -32,7 +33,7 @@ class App extends React.Component {
       .then(data => {
         this.setState({ countries: data, isLoading: true })
       })
-      .catch(err => console.log(err));
+      .catch(err => this.setState({ error: true }));
 
 
     const localTheme = window.localStorage.getItem('theme');
@@ -52,7 +53,7 @@ class App extends React.Component {
       .then(data => {
         this.setState({ countries: data, isLoading: true })
       })
-      .catch(err => console.log(err));
+      .catch(err => this.setState({ error: true }));
 
 
   }

@@ -36,22 +36,11 @@ margin: 0; width: 30%;
 .css-yk16xz-control {
     border-radius: .5rem !important;
 }
-.css-yk16xz-control > div, .css-1pahdxg-control {
-    border-radius: .5rem !important;
-}
-/* .css-g1d714-ValueContainer {
-    border-radius: .5rem !important;
-    padding: 1rem !important;
-} */
 .css-1hwfws3, .css-g1d714-ValueContainer {
     padding: 1rem !important;
 }
 .css-1uccc91-singleValue {
     color: #2b3945; font-size: 1.2rem;
-}
-
-#valuelabel {
-    border-radius: .5rem;
 }
 
 /* Extra small devices */

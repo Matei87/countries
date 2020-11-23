@@ -33,9 +33,18 @@ margin: 0; width: 30%;
 .filters.dark #valuelabel option {
     color: #2b3945;
 }
-.css-2b097c-container {
-width: 30%;
+.css-yk16xz-control {
+    border-radius: .5rem !important;
+    padding: 0 !important;
 }
+.css-g1d714-ValueContainer {
+    border-radius: .5rem !important;
+    padding: 1rem !important;
+}
+.css-1uccc91-singleValue {
+    color: #2b3945; font-size: 1.2rem;
+}
+
 #valuelabel {
     border-radius: .5rem;
 }

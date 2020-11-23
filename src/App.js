@@ -1,8 +1,9 @@
 import React from 'react';
 import Header from './components/Header/Header';
-import Filters from './components/Filters/Filters';
-import CountryDetails from './components/CountryDetails/CountryDetails';
-import Cards from './components/Cards/Cards';
+
+
+import HomePage from './pages/HomePage/HomePage';
+import CountryDetails from './pages/CountryDetails/CountryDetails';
 import Footer from './components/Footer/Footer';
 
 
@@ -18,45 +19,15 @@ import './App.css';
 
 class App extends React.Component {
   state = {
-    countries: [],
-    valueInput: '',
-    defaultUrl: 'https://restcountries.eu/rest/v2/?fields=name;capital;population;region;flag',
-    theme: 'light',
-    isLoading: false,
-    error: false
+    theme: 'light'
   }
+
 
   componentDidMount() {
-    const { defaultUrl } = this.state;
-    fetch(defaultUrl)
-      .then(res => res.json())
-      .then(data => {
-        this.setState({ countries: data, isLoading: true })
-      })
-      .catch(err => this.setState({ error: true }));
-
-
-    const localTheme = window.localStorage.getItem('theme');
-    if (localTheme) {
-      this.setState({ theme: localTheme });
-    } else {
-      this.setState({ theme: 'light' })
-    }
-
-
+    let localTheme = window.localStorage.getItem('theme');
+    localTheme ? this.setState({ theme: localTheme }) : this.setState({ theme: 'light' })
   }
 
-  componentDidUpdate() {
-    const { defaultUrl } = this.state;
-    fetch(defaultUrl)
-      .then(res => res.json())
-      .then(data => {
-        this.setState({ countries: data, isLoading: true })
-      })
-      .catch(err => this.setState({ error: true }));
-
-
-  }
 
   toggleTheme = () => {
     const { theme } = this.state;
@@ -69,60 +40,25 @@ class App extends React.Component {
     }
   }
 
-  changeUrl = e => {
-    this.setState({ defaultUrl: e.target.value })
-  }
-
-  valueInputOnChange = e => {
-    this.setState({ valueInput: e.target.value })
-  }
-
 
   render() {
-    const { countries, valueInput, isLoading } = this.state;
-
-    let filteredCountries = countries.filter(country => {
-      return country.name.toLowerCase().includes(valueInput.toLowerCase());
-    })
+    const { theme } = this.state;
 
     return (
       <Router>
         <Switch>
           <>
-            <ThemeProvider theme={this.state.theme === 'light' ? lightTheme : darkTheme}>
+            <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
               <GlobalStyles />
 
-              <Header toggleTheme={this.toggleTheme} theme={this.state.theme} />
-              <div className="container-fluid">
+              <Header toggleTheme={this.toggleTheme} theme={theme} />
 
-                <Route exact path="/" >
-                  <Filters
-                    theme={this.state.theme}
-                    changeUrl={this.changeUrl}
-                    defaultvalue={this.state.defaultvalue}
-                    countries={this.state.countries}
-                    valueInputOnChange={this.valueInputOnChange}
-                  />
 
-                  <div className="row">
-                    <div className="cards">
-                      {isLoading === false ? <>
-                        <div className="spinner-border text-light" role="status">
-                          <span className="sr-only">Loading...</span>
-                        </div>
-                      </> : filteredCountries.length === 0 ? <>
-                        <h2 className={this.state.theme === 'light' ? 'h2-center light' : ' h2-center dark'} >Not Found</h2>
-                      </> : <>  <Cards countries={filteredCountries} theme={this.state.theme} /> </>}
-                    </div>
-                  </div>
-                </Route>
-              </div>
+              <Route exact path="/" >
+                <HomePage theme={theme} />
+              </Route>
 
-              {countries.map(country => {
-                return <Route exact path={`/${country.name}`} key={country.name} theme={this.state.theme}>
-                  <CountryDetails country={`https://restcountries.eu/rest/v2/name/${country.name}`} theme={this.state.theme} />
-                </Route>
-              })}
+              <Route exact path="/:country" component={CountryDetails} />
 
               <Footer />
             </ThemeProvider>

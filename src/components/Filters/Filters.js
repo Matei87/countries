@@ -1,13 +1,16 @@
 import React from 'react';
 import './Filters.css';
 
+import Select from 'react-select';
+
 
 class Filters extends React.Component {
     render() {
-        const { changeUrl, valueInputOnChange } = this.props;
+        const { handleCountryChange, valueInputOnChange, options, option, theme } = this.props;
+
 
         return (
-            <div className={this.props.theme === 'light' ? 'filters light' : 'filters dark'}>
+            <div className={theme === 'light' ? 'filters light' : 'filters dark'}>
                 <input
                     type="search"
                     placeholder="Search a country"
@@ -15,20 +18,13 @@ class Filters extends React.Component {
                 />
 
                 <div className="form-group">
-                    <label htmlFor="valuelabel"></label>
-                    <select
-                        id="valuelabel"
-                        onChange={changeUrl}
-                        className="custom-select custom-select-lg"
-                    >
+                    <Select
+                        value={option}
+                        options={options}
+                        onChange={handleCountryChange}
+                        placeholder="Filter by Region"
 
-                        <option value="https://restcountries.eu/rest/v2/?fields=name;capital;population;region;flag" defaultValue>All Countries</option>
-                        <option value="https://restcountries.eu/rest/v2/region/africa?fields=name;capital;population;region;flag">Africa</option>
-                        <option value="https://restcountries.eu/rest/v2/region/americas?fields=name;capital;population;region;flag">America</option>
-                        <option value="https://restcountries.eu/rest/v2/region/asia?fields=name;capital;population;region;flag">Asia</option>
-                        <option value="https://restcountries.eu/rest/v2/region/europe?fields=name;capital;population;region;flag">Europe</option>
-                        <option value="https://restcountries.eu/rest/v2/region/oceania?fields=name;capital;population;region;flag">Oceania</option>
-                    </select>
+                    />
                 </div>
             </div>
         )

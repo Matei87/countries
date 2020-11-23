@@ -56,7 +56,7 @@ class HomePage extends React.Component {
 
 
     render() {
-        const { countries, valueInput, isLoading, option, error } = this.state;
+        const { countries, valueInput, isLoading, option } = this.state;
         const { theme } = this.props;
 
         let filteredCountries;

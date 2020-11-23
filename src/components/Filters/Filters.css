@@ -37,7 +37,7 @@ margin: 0; width: 30%;
     border-radius: .5rem !important;
     padding: 0 !important;
 }
-.css-yk16xz-control > div {
+.css-yk16xz-control > div, .css-1pahdxg-control {
     border-radius: .5rem !important;
     padding: 1rem !important;
 }

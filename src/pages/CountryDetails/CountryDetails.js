@@ -15,7 +15,6 @@ class CountryDetails extends Component {
     fetch(`https://restcountries.com/v3.1/name/${country}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log('inside ', data[0]);
         this.setState({ details: data[0], isLoading: true });
       })
       .catch((err) => console.log(err));
@@ -59,32 +58,34 @@ class CountryDetails extends Component {
 
             <div className={theme === 'light' ? 'row light' : 'row dark'}>
               <div className='col-md-6 first-col'>
-                <img src={details.flags['svg']} alt={details.name.official} />
+                <img src={details.flags['svg']} alt={details.name.common} />
               </div>
 
               <div className='col-md-6 second-col'>
-                <h1 className='country-name'>{details.name.official}</h1>
+                <h1 className='country-name'>{details.name.common}</h1>
                 <div className='col-md-6'>
                   <ul>
                     <li>
-                      <span>Native Name:</span> {nativeNames}
+                      <span>Native Name: </span>
+                      {nativeNames && nativeNames.join(', ')}
                     </li>
                     <li>
-                      <span>Capital:</span> {details.capital.join(', ')}
+                      <span>Capital: </span>
+                      {details.capital && details.capital.join(', ')}
                     </li>
                     <li>
                       <span>Continent: </span>
                       {details.continents.join(', ')}
                     </li>
                     <li>
-                      <span>Region:</span> {details.region}
+                      <span>Region: </span> {details.region}
                     </li>
                     <li>
-                      <span>Sub Region:</span> {details.subregion}
+                      <span>Sub Region: </span> {details.subregion}
                     </li>
 
                     <li>
-                      <span>Border:</span>{' '}
+                      <span>Border: </span>
                       {details.borders && details.borders.join(', ')}
                     </li>
                   </ul>
@@ -96,16 +97,18 @@ class CountryDetails extends Component {
                       {Number(details.population).toLocaleString()}
                     </li>
                     <li>
-                      <span>Net Domain:</span> {details.tld}
+                      <span>Net Domain: </span> {details.tld}
                     </li>
                     <li>
-                      <span>Currency:</span> {currency.join(', ')}
+                      <span>Currency: </span> {currency && currency.join(', ')}
                     </li>
                     <li>
-                      <span>Languages:</span> {languages.join(', ')}
+                      <span>Languages: </span>
+                      {languages && languages.join(', ')}
                     </li>
                     <li>
-                      <span>Time Zone:</span> {details.timezones.join(', ')}
+                      <span>Time Zone: </span>
+                      {details.timezones && details.timezones.join(', ')}
                     </li>
                   </ul>
                 </div>
